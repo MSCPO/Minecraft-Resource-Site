@@ -7,4 +7,44 @@
         "spanLeft": "MSCPO资源站",
         "spanRight": "开服核心"
     }
+],
+[
+    {
+        "link": "/plugins",
+        "header": "插件",
+        "meta": "Plugins",
+        "description": "在这里发现服务端插件！",
+        "spanLeft": "MSCPO资源站",
+        "spanRight": "插件"
+    }
+],
+[
+    {
+        "link": "/mods",
+        "header": "模组",
+        "meta": "Mods",
+        "description": "在这里发现更多模组！",
+        "spanLeft": "MSCPO资源站",
+        "spanRight": "模组"
+    }
+],
+[
+    {
+        "link": "/docs",
+        "header": "开服文档",
+        "meta": "Docs",
+        "description": "不会开服？里面请！",
+        "spanLeft": "MSCPO资源站",
+        "spanRight": "开服文档"
+    }
+],
+[
+    {
+        "link": "/tools",
+        "header": "常用工具",
+        "meta": "Tools",
+        "description": "一些有用的东西",
+        "spanLeft": "MSCPO资源站",
+        "spanRight": "常用工具"
+    }
 ]
