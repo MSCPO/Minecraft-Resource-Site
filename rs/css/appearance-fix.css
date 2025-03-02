@@ -1,0 +1,170 @@
+/* 重置所有表单元素的appearance */
+button,
+input,
+select,
+textarea {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+/* 特定输入框样式 */
+input[type=email],
+input[type=password],
+input[type=search],
+input[type=text],
+input[type=number],
+[type=button],
+[type=reset],
+[type=submit] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+/* 搜索框 */
+[type=search] {
+    -webkit-appearance: textfield;
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+/* 搜索框取消按钮 */
+[type=search]::-webkit-search-cancel-button,
+[type=search]::-webkit-search-decoration {
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+/* 文件上传按钮 */
+::-webkit-file-upload-button,
+::file-selector-button {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+}
+
+/* 数字输入框箭头 */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+
+/* 下拉框 */
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+/* 添加标准appearance属性以实现跨浏览器兼容性 */
+input[type=email],
+input[type=password],
+input[type=search],
+input[type=text] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+[type=button],
+[type=reset],
+[type=submit],
+button,
+html [type=button] {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+}
+
+[type=search] {
+    -webkit-appearance: textfield;
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+[type=search]::-webkit-search-cancel-button,
+[type=search]::-webkit-search-decoration {
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+::-webkit-file-upload-button {
+    -webkit-appearance: button;
+    appearance: button;
+    font: inherit;
+}
+
+/* 
+ * Fix for appearance property vendor prefixes
+ * This file adds standard unprefixed versions of appearance properties
+ * to complement the prefixed versions in Semantic UI
+ */
+
+/* Fix for input elements */
+input[type=email],
+input[type=password],
+input[type=search],
+input[type=text] {
+    appearance: none;
+}
+
+/* Fix for button elements */
+[type=reset],
+[type=submit],
+button,
+html [type=button] {
+    appearance: button;
+}
+
+/* Fix for search input */
+[type=search] {
+    appearance: textfield;
+}
+
+/* Fix for file upload button */
+::-webkit-file-upload-button {
+    appearance: button;
+}
+
+/* Additional fixes for better cross-browser compatibility */
+select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+/* Remove default arrow in IE */
+select::-ms-expand {
+    display: none;
+}
+
+/* Fix for meter element */
+meter {
+    appearance: meter;
+    -webkit-appearance: meter;
+    -moz-appearance: meter;
+}
+
+/* Fix for progress element */
+progress {
+    appearance: progress;
+    -webkit-appearance: progress;
+    -moz-appearance: progress;
+}
+
+/* Fix for radio buttons */
+input[type="radio"] {
+    appearance: radio;
+    -webkit-appearance: radio;
+    -moz-appearance: radio;
+}
+
+/* Fix for checkboxes */
+input[type="checkbox"] {
+    appearance: checkbox;
+    -webkit-appearance: checkbox;
+    -moz-appearance: checkbox;
+} 

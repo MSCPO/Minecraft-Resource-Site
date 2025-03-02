@@ -1,8 +1,28 @@
+/* CSS Reset and Compatibility */
+* {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-ms-appearance: none;
+	-o-appearance: none;
+	appearance: none;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/* Base styles */
+html, body {
+	height: 100%;
+	width: 100%;
+}
+
 /* The default navigation bar seems to have a rounded border.
 This leads to little areas where white bleeds through so change it back to none. */
 .cuberite-navigation
 {
 	border-radius: 0 !important;
+	-webkit-border-radius: 0 !important;
+	-moz-border-radius: 0 !important;
 }
 
 /* Push the default footer towards the bottom of the page no matter what.
@@ -10,14 +30,20 @@ Also serves to vertically-centre page content. */
 #cuberite-main-container
 {
 	/* 145 = height footer + header */
-	min-height: calc(-145px + 100%);
+	min-height: calc(100vh - 145px);
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-direction: column;
+	flex-direction: column;
+	overflow: hidden;
+	padding: 20px 0;
 }
 
 /* Special case for grid containers which cover more vertical space. */
 #cuberite-main-container.grid
 {
 	/* 117 = height footer + header */
-	min-height: calc(-117px + 100%);
+	min-height: calc(100vh - 117px);
 }
 
 /* Cards have a negative margin which inteferes with footer calculation, delet. */
@@ -39,21 +65,41 @@ Also serves to vertically-centre page content. */
 }
 
 /* Provide a fade in animation for plugin cards. */
-@keyframes CondensedEntryDisplay
+@-webkit-keyframes CondensedEntryDisplay
 {
 	from
 	{
 		opacity: 0;
+		-webkit-transform: scale(1.1);
 		transform: scale(1.1);
 	}
 	to
 	{
 		opacity: 1;
+		-webkit-transform: scale(1);
 		transform: scale(1);
 	}
 }
+
+@keyframes CondensedEntryDisplay
+{
+	from
+	{
+		opacity: 0;
+		-webkit-transform: scale(1.1);
+		transform: scale(1.1);
+	}
+	to
+	{
+		opacity: 1;
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+}
+
 .cuberite-condensed-plugin.card
 {
+	-webkit-animation: CondensedEntryDisplay 300ms;
 	animation: CondensedEntryDisplay 300ms;
 }
 
@@ -64,25 +110,46 @@ Also serves to vertically-centre page content. */
 }
 
 /* Provide a slide in animation for plugin pages. */
+@-webkit-keyframes ExpandedEntryDisplay
+{
+	from
+	{
+		opacity: 0;
+		-webkit-transform: translateX(20px);
+		transform: translateX(20px);
+	}
+	to
+	{
+		opacity: 1;
+		-webkit-transform: translateX(0);
+		transform: translateX(0);
+	}
+}
+
 @keyframes ExpandedEntryDisplay
 {
 	from
 	{
 		opacity: 0;
+		-webkit-transform: translateX(20px);
 		transform: translateX(20px);
 	}
 	to
 	{
-		transform: translateX(0);
 		opacity: 1;
+		-webkit-transform: translateX(0);
+		transform: translateX(0);
 	}
 }
+
 .cuberite-expanded-plugin:nth-of-type(2)
 {
+	-webkit-animation: ExpandedEntryDisplay 800ms;
 	animation: ExpandedEntryDisplay 800ms;
 }
 .cuberite-expanded-plugin:nth-of-type(1)
 {
+	-webkit-animation: ExpandedEntryDisplay 500ms;
 	animation: ExpandedEntryDisplay 500ms;
 }
 
@@ -90,12 +157,14 @@ Also serves to vertically-centre page content. */
 .cuberite-expanded-plugin > table
 {
 	border-collapse: collapse;
-	border-spacing: 0px;
+	border-spacing: 0;
+	width: 100%;
 }
 .cuberite-expanded-plugin > table th, .cuberite-expanded-plugin > table td
 {
 	border: 1px solid #DDD;
 	padding: 6px 13px;
+	text-align: left;
 }
 
 /* Semantic horizontal icon lists seem to be broken.
@@ -103,12 +172,14 @@ The text doesn't go on the same line as the icon. */
 .horizontal.cuberite-expanded-plugin-metadata.list > .item > .content
 {
 	width: auto;
+	display: inline-block;
 }
 
 /* The GitHub icon is inexplicably smaller, make it larger. */
 .github.icon
 {
 	font-size: 1.1em;
+	line-height: 1;
 }
 
 @media only screen and (max-width: 767px)
@@ -120,7 +191,9 @@ The text doesn't go on the same line as the icon. */
 
 	#cuberite-navigation-container, #cuberite-navigation-login-items
 	{
+		-webkit-flex-wrap: wrap;
 		flex-wrap: wrap;
+		-webkit-justify-content: center;
 		justify-content: center;
 	}
 
@@ -135,5 +208,192 @@ Also correct some visual issues after the scheme is applied, like text contrast.
 .inverted.cuberite-theme
 {
 	background: #FFFFFF !important;
+	background: -webkit-linear-gradient(220deg, #E255A2, #67B4E1) fixed !important;
 	background: linear-gradient(220deg, #E255A2, #67B4E1) fixed !important;
+}
+
+/* 优化卡片布局 */
+.ui.cards {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    margin: -0.875em -0.5em !important;
+}
+
+.ui.cards > .card {
+    display: flex !important;
+    flex-direction: column !important;
+    margin: 0.875em 0.5em !important;
+    flex: 0 1 calc(20% - 1em) !important;
+    min-width: 200px !important;
+}
+
+.ui.cards > .card > .content {
+    flex: 1 0 auto !important;
+    padding: 1em !important;
+}
+
+.ui.cards > .card .header {
+    font-size: 1.2em !important;
+    font-weight: bold !important;
+    margin-bottom: 0.5em !important;
+}
+
+.ui.cards > .card .meta {
+    color: rgba(0,0,0,.4) !important;
+    margin-bottom: 0.5em !important;
+}
+
+.ui.cards > .card .description {
+    color: rgba(0,0,0,.7) !important;
+    line-height: 1.4 !important;
+}
+
+.ui.cards > .card .extra.content {
+    padding: 0.75em 1em !important;
+    border-top: 1px solid rgba(0,0,0,.05) !important;
+}
+
+/* 响应式布局 */
+@media only screen and (max-width: 1200px) {
+    .ui.cards > .card {
+        flex: 0 1 calc(25% - 1em) !important;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .ui.cards > .card {
+        flex: 0 1 calc(33.33% - 1em) !important;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .ui.cards > .card {
+        flex: 0 1 calc(50% - 1em) !important;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .ui.cards > .card {
+        flex: 0 1 100% !important;
+    }
+}
+
+/* 卡片容器样式 */
+.horizontal-scroll-cards {
+    display: flex;
+    flex-wrap: wrap !important;
+    gap: 1rem;
+    width: 100%;
+    margin: -0.5em !important;
+}
+
+.horizontal-scroll-cards .ui.card {
+    flex: 0 1 calc(25% - 2rem) !important;
+    min-width: 250px !important;
+    margin: 0.5em !important;
+    height: auto;
+    cursor: pointer;
+}
+
+/* 确保卡片内容正确显示 */
+.horizontal-scroll-cards .ui.card .content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.horizontal-scroll-cards .ui.card .description {
+    flex-grow: 1;
+}
+
+/* 响应式布局调整 */
+@media only screen and (max-width: 1200px) {
+    .horizontal-scroll-cards .ui.card {
+        flex: 0 1 calc(33.33% - 2rem) !important;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .horizontal-scroll-cards .ui.card {
+        flex: 0 1 calc(50% - 2rem) !important;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .horizontal-scroll-cards .ui.card {
+        flex: 0 1 100% !important;
+    }
+}
+
+/* 移除之前的滚动条样式,因为现在不需要水平滚动了 */
+.horizontal-scroll-cards::-webkit-scrollbar,
+.horizontal-scroll-cards::-webkit-scrollbar-track,
+.horizontal-scroll-cards::-webkit-scrollbar-thumb {
+    display: none;
+}
+
+/* 横向卡片布局 */
+.ui.horizontal-cards {
+    display: flex;
+    flex-wrap: wrap !important;  /* 启用自动换行 */
+    gap: 1rem;
+    padding: 1rem 0;
+    width: 100%;
+}
+
+.ui.horizontal-cards > .card {
+    flex: 0 1 calc(25% - 1rem) !important;  /* 每行4个卡片 */
+    min-width: 250px !important;
+    margin: 0 !important;
+    height: auto;
+}
+
+.ui.horizontal-cards > .card > .content {
+    flex: 1 0 auto;
+    padding: 1em;
+}
+
+.ui.horizontal-cards > .card .header {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+    white-space: normal;
+}
+
+.ui.horizontal-cards > .card .meta {
+    color: rgba(0,0,0,.4);
+    margin-bottom: 0.5em;
+    white-space: normal;
+}
+
+.ui.horizontal-cards > .card .description {
+    color: rgba(0,0,0,.7);
+    line-height: 1.4;
+    white-space: normal;
+}
+
+.ui.horizontal-cards > .card .extra.content {
+    padding: 0.75em 1em;
+    border-top: 1px solid rgba(0,0,0,.05);
+    display: flex;
+    justify-content: space-between;
+}
+
+/* 响应式布局 */
+@media only screen and (max-width: 1200px) {
+    .ui.horizontal-cards > .card {
+        flex: 0 1 calc(33.33% - 1rem) !important;  /* 每行3个卡片 */
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .ui.horizontal-cards > .card {
+        flex: 0 1 calc(50% - 1rem) !important;  /* 每行2个卡片 */
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .ui.horizontal-cards > .card {
+        flex: 0 1 100% !important;  /* 每行1个卡片 */
+    }
 }

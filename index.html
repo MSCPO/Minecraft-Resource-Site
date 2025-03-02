@@ -4,7 +4,10 @@
     <title>MSCPO资源站 - MC服主的全能资源站！</title>
     <link type="text/css" href="rs/css/semantic.min.css" rel="stylesheet" />
     <link type="text/css" href="rs/css/stylesheet.css" rel="stylesheet" />
+    <link type="text/css" href="rs/css/appearance-fix.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
 </head>
 
 <body>
@@ -22,10 +25,7 @@
 
     <main class="ui container" id="cuberite-main-container">
         <div class="ui hidden divider"></div>
-
-        <section class="ui stackable doubling link cards">
-            <div id="index-json"></div>
-        </section>
+        <div class="ui horizontal-cards" id="index-json"></div>
     </main>
 
     <script>
@@ -42,17 +42,19 @@
 
                 // Create a new element for each item and append it to the output div
                 data.forEach(item => {
-                    htmlContent += `<a class="ui card" href="${item.link}">`;
-                    htmlContent += `<div class="content">`;
-                    htmlContent += `<div class="header">${item.header}</div>`;
-                    htmlContent += `<div class="meta">${item.meta}</div>`;
-                    htmlContent += `<div class="description">${item.description}</div>`;
-                    htmlContent += '</div>';
-                    htmlContent += '<div class="extra content">';
-                    htmlContent += `<span>${item.spanLeft}</span>`;
-                    htmlContent += `<span class="right floated">${item.spanRight}</span>`;
-                    htmlContent += '</div>';
-                    htmlContent += '</a>';
+                    htmlContent += `
+                        <a class="ui card" href="${item.link}">
+                            <div class="content">
+                                <div class="header">${item.header}</div>
+                                <div class="meta">${item.meta}</div>
+                                <div class="description">${item.description}</div>
+                            </div>
+                            <div class="extra content">
+                                <span class="left floated">${item.spanLeft}</span>
+                                <span class="right floated">${item.spanRight}</span>
+                            </div>
+                        </a>
+                    `;
                 });
 
                 outputDiv.innerHTML = htmlContent;
