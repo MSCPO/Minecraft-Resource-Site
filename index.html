@@ -1,46 +1,34 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
-	<head>
-		<title>MSCPO资源站 - MC服主的全能资源站！</title>
-		<link type="text/css" href="rs/css/semantic.min.css" rel="stylesheet" />
-		<link type="text/css" href="rs/css/stylesheet.css" rel="stylesheet" />
-		<meta name="viewport" content="width=device-width" />
+<head>
+    <title>MSCPO资源站 - MC服主的全能资源站！</title>
+    <link type="text/css" href="rs/css/semantic.min.css" rel="stylesheet" />
+    <link type="text/css" href="rs/css/stylesheet.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width" />
+</head>
 
-					</head>
+<body>
+    <nav class="ui inverted cuberite-theme cuberite-navigation menu">
+        <div class="ui container" id="cuberite-navigation-container">
+            <a href="/" class="header item">
+                <img src="rs/img/logo.webp" style="margin-right: 1.5em" alt="Logo" class="logo" />
+                <p>MSCPO资源站</p>
+            </a>
+            <a class="right item" href="javascript:history.back()">
+                <span>返回上一页</span>
+            </a>
+        </div>
+    </nav>
 
-	<body>
-		<nav class="ui inverted cuberite-theme cuberite-navigation menu">
-	<div class="ui container" id="cuberite-navigation-container">
-		<a href="/" class="header item">
-			<img
-				src="rs/img/logo.webp"
-				style="margin-right: 1.5em"
-				alt="Logo"
-				class="logo"
-			/>
-			<p>MSCPO资源站</p>
-		</a>
-		
-					<a
-				class="right item"
-				href="javascript:history.back()"
-			>
-				<span>返回上一页</span>
-			</a>
-			</div>
-</nav>
-		
-<main class="ui container" id="cuberite-main-container">
-	<div class="ui hidden divider"></div>
+    <main class="ui container" id="cuberite-main-container">
+        <div class="ui hidden divider"></div>
 
-	<section class="ui centered link cards">
-	<div id="index-json"></div>
-			</section>
-</main>
+        <section class="ui centered link cards">
+            <div id="index-json"></div>
+        </section>
+    </main>
 
     <script>
-        let counter = 0;
-
         fetch('rs/json/index.json')
             .then(response => {
                 if (!response.ok) {
@@ -54,34 +42,31 @@
 
                 // Create a new element for each item and append it to the output div
                 data.forEach(item => {
-                    htmlContent += `<a class="cuberite-condensed-plugin card" style="animation-duration: 108ms" href="${item.link}">`;
-                    htmlContent += `<article class="content">`;
-                    htmlContent += `<h3 class="header">${item.header}</h3>`;
+                    htmlContent += `<a class="ui card" href="${item.link}">`;
+                    htmlContent += `<div class="content">`;
+                    htmlContent += `<div class="header">${item.header}</div>`;
                     htmlContent += `<div class="meta">${item.meta}</div>`;
-                    htmlContent += `<p class="description">${item.description}</p>`;
-                    htmlContent += '</article>';
+                    htmlContent += `<div class="description">${item.description}</div>`;
+                    htmlContent += '</div>';
                     htmlContent += '<div class="extra content">';
                     htmlContent += `<span>${item.spanLeft}</span>`;
                     htmlContent += `<span class="right floated">${item.spanRight}</span>`;
                     htmlContent += '</div>';
                     htmlContent += '</a>';
-
-                    // Increment the counter
-                    counter++;
                 });
 
                 outputDiv.innerHTML = htmlContent;
             })
-            .catch(error => console.error('Error loading JSON:', error));
+            * .catch(error => console.error('Error loading JSON:', error));
     </script>
 
-
-		<footer class="ui inverted cuberite-theme cuberite-navigation footer segment">
-	<div class="ui center aligned container">
-		<div class="ui inverted horizontal link list">
-			<a class="item" href="http://www.mscpo.top/">MSCPO</a>
-			<a class="item" href="https://github.com/MSCPO/Minecraft-Resource-Site">GitHub</a>
-		</div>
-	</div>
-</footer>	</body>
+    <footer class="ui inverted cuberite-theme cuberite-navigation footer segment">
+        <div class="ui center aligned container">
+            <div class="ui inverted horizontal link list">
+                <a class="item" href="http://www.mscpo.top/">MSCPO</a>
+                <a class="item" href="https://github.com/MSCPO/Minecraft-Resource-Site">GitHub</a>
+            </div>
+        </div>
+    </footer>
+</body>
 </html>
